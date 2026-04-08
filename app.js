@@ -21,7 +21,8 @@ let dragMode = null; // "add" | "remove"
 /* ─── Date helpers ────────────────────────────────────────────── */
 
 function mkDate(str) {
-  return new Date(str + "T12:00:00");
+  const [y, m, d] = str.split("-").map(Number);
+  return new Date(y, m - 1, d, 12, 0, 0);
 }
 
 function fmtDate(d) {
