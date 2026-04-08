@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UK Leave Optimiser</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app">
+
+  <h1>UK leave optimiser</h1>
+  <p class="sub">Maximise your time off by building breaks around bank holidays</p>
+
+  <div class="card">
+    <p class="card-title">Your settings</p>
+    <div class="grid2" style="margin-bottom:1rem">
+      <div class="field">
+        <label for="regionSel">Region</label>
+        <select id="regionSel">
+          <option value="ew">England &amp; Wales</option>
+          <option value="sc">Scotland</option>
+          <option value="ni">Northern Ireland</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="yearTypeSel">Holiday year runs</label>
+        <select id="yearTypeSel">
+          <option value="jan">January – December</option>
+          <option value="apr">April – March (tax year)</option>
+          <option value="custom">Custom start month</option>
+        </select>
+      </div>
+      <div class="field" id="customMonthField" style="display:none">
+        <label for="customMonth">Start month</label>
+        <select id="customMonth">
+          <option value="0">January</option><option value="1">February</option>
+          <option value="2">March</option><option value="3">April</option>
+          <option value="4">May</option><option value="5">June</option>
+          <option value="6">July</option><option value="7">August</option>
+          <option value="8">September</option><option value="9">October</option>
+          <option value="10">November</option><option value="11">December</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="calYearSel">Year start (calendar)</label>
+        <select id="calYearSel">
+          <option value="2025">2025</option>
+          <option value="2026" selected>2026</option>
+        </select>
+      </div>
+    </div>
+    <div class="grid3" style="margin-bottom:1rem">
+      <div class="field">
+        <label for="totalLeave">Annual leave entitlement</label>
+        <input type="number" id="totalLeave" value="25" min="1" max="60">
+      </div>
+      <div class="field">
+        <label>Days already taken</label>
+        <input type="number" id="numTaken" value="0" readonly class="readonly-input">
+        <p class="yr-range" id="yrRangeLabel"></p>
+      </div>
+      <div class="field">
+        <label>Remaining allowance</label>
+        <input type="number" id="remainingShow" value="25" readonly class="readonly-input">
+      </div>
+    </div>
+    <div class="sep"></div>
+    <p class="card-title" style="margin-bottom:4px">Working days</p>
+    <p class="hint-sm">Click to toggle each day on or off</p>
+    <div class="day-row" id="dayBtns"></div>
+  </div>
+
+  <div class="card">
+    <p class="card-title">Days already taken off</p>
+    <p class="drag-hint">Click a day to select it, or click and drag across multiple days to select a range. Weekends and bank holidays are skipped automatically.</p>
+    <div class="dp-nav">
+      <button class="dp-nav-btn" id="dpPrevBtn">&#8592;</button>
+      <span class="dp-month-label" id="dpMonthLabel"></span>
+      <button class="dp-nav-btn" id="dpNextBtn">&#8594;</button>
+    </div>
+    <div class="dp-grid" id="dpGrid"></div>
+    <div class="add-row">
+      <button class="add-btn" id="addBtn" disabled>Add selected days</button>
+      <span class="sel-count" id="selCount">0 days selected</span>
+    </div>
+    <div id="takenChips" style="margin-top:8px"></div>
+  </div>
+
+  <div id="statsRow" class="stats"></div>
+
+  <div class="legend">
+    <div class="leg"><div class="dot dot-bh"></div>Bank holiday</div>
+    <div class="leg"><div class="dot dot-sug"></div>Suggested leave</div>
+    <div class="leg"><div class="dot dot-taken"></div>Already taken</div>
+  </div>
+  <p class="hint">Click a suggested day inside a break to mark it as already taken. Click a taken day to remove it.</p>
+  <div id="warnEl" class="warn">You've used all your available leave — some suggestions couldn't be included.</div>
+
+  <div id="clusters"></div>
+
+</div>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+
+</body>
+</html>
