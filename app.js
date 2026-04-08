@@ -673,11 +673,3 @@ document.getElementById("dpPrevBtn").addEventListener("click", dpPrev);
 document.getElementById("dpNextBtn").addEventListener("click", dpNext);
 document.getElementById("addBtn").addEventListener("click", addSelected);
 
-
-/* ─── Init ────────────────────────────────────────────────────── */
-
-renderDayBtns();
-renderChips();
-initDPEvents();
-renderDP();
-rebuild();

@@ -103,6 +103,15 @@
 </div>
 
 <script src="data.js"></script>
+<script>
+  loadBankHolidays().then(() => {
+    renderDayBtns();
+    renderChips();
+    initDPEvents();
+    renderDP();
+    rebuild();
+  });
+</script>
 <script src="app.js"></script>
 
 </body>
